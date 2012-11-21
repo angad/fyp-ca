@@ -1,0 +1,167 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenNAT: Cloud-based Architecture for NAT Traversal</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <!--<span><img src="images/google_developers_logo.png"></span>-->
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <!--<aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>-->
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Introduction</h2>
+      <h3>The Problem</h3>
+      <br>
+    </hgroup>
+    <ul class = "build">
+      <li><div class = "blue">IPv4</div> - 32 bit addresses<br/> - IPv4 exhaustion</li>
+      <li><div class = "blue">NAT</div> - Using a single IP address for a whole network of computers.<br/> - NATs only allow incoming traffic from an outside address to which an outgoing packet has already been sent to.</li>
+      <li><div class = "blue">IPv6</div> - 128 bit addresses<br/> - But slow adoption</li>
+      <li><div class = "blue">NAT Traversal</div> - 90% success rate<br/> - Existing libraries incompatible.</li>
+    </ul>
+
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Our Goals</h2>
+      <h3>Our Solution</h3>
+      <br/>
+    </hgroup>
+    <ul class = "build">
+      <li><div class = "blue">To develop a connectivity service that can transparently establish and maintain direct connections
+amongst clients.</div></li>
+      <li><div class = "blue">Identity</div> - To identify the end points</li>
+      <li><div class = "blue">Reliability</div> - If a new client is online, a connection should be established either directly or through a proxy</li>
+      <li><div class = "blue">Mobility</div> - If an end-point might move and change its interenet connection, the service should track the change and transparently re-establish the connection</li>
+    </ul>
+
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>OpenNAT</h2>
+      <br/>
+    </hgroup>
+    <ul class = "build">
+      <li><div class = "blue">OpenNAT Client</div> - Clients maintain an open connection with OpenNAT Service</li>
+      <li><div class = "blue">OpenNAT Service</div> - Naming and Resolution Service<br/> - NAT Traversal connection service</li>
+      <li><div class = "blue">Connection</div> - Traditional socket architecture</li>
+    </ul>
+
+  </slide>
+
+
+
+<slide>
+    <hgroup>
+      <h2>OpenNAT Service</h2>   
+      <br/>
+    </hgroup>
+    <ul class = "build">
+      <li><div class = "blue">C-servers</div> - Client obtains a CID<br/>- Helps in NAT Traversal</li>
+      <li><div class = "blue">S-server</div>- Registers an SID <br/> - Query SID and Obtain CID of recipient</li>
+    </ul>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>OpenNAT System Architecture</h2>
+    </hgroup>
+      <img src="images/system.png">
+  </slide>
+
+
+<slide>
+    <hgroup>
+      <h2>Mobile Messaging app</h2>
+      <h3>Mew</h3>
+      <br/>
+    </hgroup>
+    <ul class = "build">
+      <li><div class = "blue">C-servers</div> - Client obtains a CID<br/>- Helps in NAT Traversal</li>
+      <li><div class = "blue">S-server</div>- Registers an SID <br/> - Query SID and Obtain CID of recipient</li>
+    </ul>
+  </slide>
+
+
+
+
+
+
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="dark nobackground">
+    <article class="flexbox vcenter">
+      <!--<span><img src="images/google_developers_logo_white.png"></span>-->
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
